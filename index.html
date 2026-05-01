@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Visulizer Salma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>My Budget Visualizer</h1>
+
+        <!-- Total Balance Banner -->
+        <div class="balance-banner">
+            <div class="balance-label">Total Balance</div>
+            <div id="totalBalance" class="balance-amount">Rp 0</div>
+        </div>
+
+        <!-- Add Transaction Card -->
+        <div class="card">
+            <h2 class="card-title">Add Transaction</h2>
+            <div class="input-group">
+                <input type="text" id="itemName" placeholder="Description (e.g. Lunch)">
+                <input type="number" id="itemAmount" placeholder="Amount (Rp)" min="0">
+
+                <input type="date" id="itemDate">
+
+                <div class="category-row">
+                    <select id="itemCategory"></select>
+                    <button id="addCategoryBtn" class="btn-secondary" title="Add custom category">＋ Category</button>
+                </div>
+
+                <button id="addBtn">Add</button>
+                <p id="errorMsg" class="error-msg"></p>
+            </div>
+        </div>
+
+        <!-- Monthly Summary Card -->
+        <div class="card">
+            <h2 class="card-title">Monthly Summary</h2>
+            <div class="month-filter-row">
+                <select id="summaryMonth"></select>
+                <select id="summaryYear"></select>
+            </div>
+            <div id="monthlySummary" class="summary-grid"></div>
+        </div>
+
+        <!-- Transaction List Card -->
+        <div class="card">
+            <h2 class="card-title">Transactions</h2>
+            <div class="sort-row">
+                <label>Sort by:</label>
+                <select id="sortSelect">
+                    <option value="date-desc">Date (Newest)</option>
+                    <option value="date-asc">Date (Oldest)</option>
+                    <option value="amount-desc">Amount (High → Low)</option>
+                    <option value="amount-asc">Amount (Low → High)</option>
+                    <option value="category">Category (A–Z)</option>
+                </select>
+            </div>
+            <ul id="transactionList" class="transaction-list"></ul>
+        </div>
+
+        <!-- Chart Card -->
+        <div class="card">
+            <h2 class="card-title">Spending by Category</h2>
+            <div class="chart-container">
+                <canvas id="myChart"></canvas>
+                <p id="chartEmpty" class="chart-empty hidden">No expense data to display.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
